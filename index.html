@@ -500,9 +500,9 @@
       <h2>Route Map</h2>
       <p style="font-size:0.88em; color:var(--med-gray); margin-bottom:12px;">Toggle each option to see the route. Solid lines = main route, dashed = optional side-trip.</p>
       <div class="map-toggles">
-        <button class="map-toggle active-a" id="toggle-a" onclick="toggleRoute('a')">A: Milos + Paros</button>
-        <button class="map-toggle active-b" id="toggle-b" onclick="toggleRoute('b')">B: Crete + Santorini</button>
-        <button class="map-toggle active-c" id="toggle-c" onclick="toggleRoute('c')">C: Milos + Crete</button>
+        <button class="map-toggle active-a" id="toggle-a" onclick="toggleRoute('a')">A: Highlights Reel</button>
+        <button class="map-toggle active-b" id="toggle-b" onclick="toggleRoute('b')">B: Cycladic Triangle</button>
+        <button class="map-toggle active-c" id="toggle-c" onclick="toggleRoute('c')">C: Best of Both</button>
         <button class="map-toggle active-d" id="toggle-d" onclick="toggleRoute('d')">D: Grand Tour</button>
       </div>
       <div id="map-container">
@@ -543,66 +543,66 @@
         <thead>
           <tr>
             <th></th>
-            <th class="col-a">Option A<br>Milos+Paros</th>
-            <th class="col-b">Option B<br>Crete+Santorini</th>
-            <th class="col-c">Option C<br>Milos+Crete</th>
+            <th class="col-a">Option A<br>Crete+Santorini+Paros</th>
+            <th class="col-b">Option B<br>Milos+Paros+Santorini</th>
+            <th class="col-c">Option C<br>Milos+Crete+Santorini</th>
             <th class="col-d">Option D<br>Grand Tour</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>Est. cost (per couple)</td>
-            <td>&euro;1,500</td>
             <td>&euro;2,500</td>
-            <td>&euro;1,600</td>
+            <td>&euro;2,000</td>
+            <td>&euro;2,200</td>
             <td>&euro;2,200</td>
           </tr>
           <tr>
             <td>Islands visited</td>
-            <td>2 + Athens</td>
-            <td>2 + Athens</td>
-            <td>2 + Athens</td>
+            <td>3 + Athens</td>
+            <td>3 + Athens</td>
+            <td>3 + Athens</td>
             <td>5 + Athens</td>
           </tr>
           <tr>
             <td>Kid-friendliness</td>
-            <td class="dots-a">&#9679;&#9679;&#9679;&#9679;&#9675;</td>
-            <td class="dots-b">&#9679;&#9679;&#9679;&#9675;&#9675;</td>
-            <td class="dots-c">&#9679;&#9679;&#9679;&#9679;&#9675;</td>
+            <td class="dots-a">&#9679;&#9679;&#9679;&#9675;&#9675;</td>
+            <td class="dots-b">&#9679;&#9679;&#9679;&#9679;&#9675;</td>
+            <td class="dots-c">&#9679;&#9679;&#9679;&#9675;&#9675;</td>
             <td class="dots-d">&#9679;&#9679;&#9679;&#9675;&#9675;</td>
           </tr>
           <tr>
             <td>"Wow factor"</td>
-            <td class="dots-a">&#9679;&#9679;&#9679;&#9679;&#9675;</td>
+            <td class="dots-a">&#9679;&#9679;&#9679;&#9679;&#9679;</td>
             <td class="dots-b">&#9679;&#9679;&#9679;&#9679;&#9679;</td>
-            <td class="dots-c">&#9679;&#9679;&#9679;&#9679;&#9675;</td>
+            <td class="dots-c">&#9679;&#9679;&#9679;&#9679;&#9679;</td>
             <td class="dots-d">&#9679;&#9679;&#9679;&#9679;&#9679;</td>
           </tr>
           <tr>
             <td>Beach quality</td>
+            <td class="dots-a">&#9679;&#9679;&#9679;&#9679;&#9675;</td>
+            <td class="dots-b">&#9679;&#9679;&#9679;&#9679;&#9679;</td>
+            <td class="dots-c">&#9679;&#9679;&#9679;&#9679;&#9679;</td>
+            <td class="dots-d">&#9679;&#9679;&#9679;&#9679;&#9679;</td>
+          </tr>
+          <tr>
+            <td>Vegetarian food</td>
             <td class="dots-a">&#9679;&#9679;&#9679;&#9679;&#9679;</td>
             <td class="dots-b">&#9679;&#9679;&#9679;&#9679;&#9675;</td>
             <td class="dots-c">&#9679;&#9679;&#9679;&#9679;&#9679;</td>
             <td class="dots-d">&#9679;&#9679;&#9679;&#9679;&#9679;</td>
           </tr>
           <tr>
-            <td>Vegetarian food</td>
-            <td class="dots-a">&#9679;&#9679;&#9679;&#9679;&#9675;</td>
-            <td class="dots-b">&#9679;&#9679;&#9679;&#9679;&#9679;</td>
-            <td class="dots-c">&#9679;&#9679;&#9679;&#9679;&#9679;</td>
-            <td class="dots-d">&#9679;&#9679;&#9679;&#9679;&#9679;</td>
-          </tr>
-          <tr>
             <td>Logistics ease</td>
-            <td class="dots-a">&#9679;&#9679;&#9679;&#9679;&#9675;</td>
-            <td class="dots-b">&#9679;&#9679;&#9679;&#9675;&#9675;</td>
-            <td class="dots-c">&#9679;&#9679;&#9679;&#9675;&#9675;</td>
+            <td class="dots-a">&#9679;&#9679;&#9679;&#9675;&#9675;</td>
+            <td class="dots-b">&#9679;&#9679;&#9679;&#9679;&#9675;</td>
+            <td class="dots-c">&#9679;&#9679;&#9675;&#9675;&#9675;</td>
             <td class="dots-d">&#9679;&#9679;&#9675;&#9675;&#9675;</td>
           </tr>
           <tr>
             <td>Cultural variety</td>
-            <td class="dots-a">&#9679;&#9679;&#9679;&#9675;&#9675;</td>
-            <td class="dots-b">&#9679;&#9679;&#9679;&#9679;&#9679;</td>
+            <td class="dots-a">&#9679;&#9679;&#9679;&#9679;&#9679;</td>
+            <td class="dots-b">&#9679;&#9679;&#9679;&#9679;&#9675;</td>
             <td class="dots-c">&#9679;&#9679;&#9679;&#9679;&#9679;</td>
             <td class="dots-d">&#9679;&#9679;&#9679;&#9679;&#9679;</td>
           </tr>
@@ -614,87 +614,102 @@
       <strong>A note on Santorini with toddlers:</strong> Steep stairs, unprotected drops in caldera villages, no stroller access, volcanic pebble beaches (not sandy). Doable as a day trip/overnight, but probably shouldn't be our main base.
     </div>
 
-    <!-- Option A: Cycladic Highlights -->
+    <!-- Option A: Highlights Reel -->
     <div class="option-card">
       <div class="option-photo-wrapper">
-        <img class="option-photo" src="https://images.unsplash.com/photo-1601581875039-e899893d520c?w=800&h=300&fit=crop" alt="Milos lunar beach" loading="lazy">
+        <img class="option-photo" src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=800&h=300&fit=crop" alt="Crete coast" loading="lazy" style="height:100px;">
+        <div class="option-photo-overlay">Crete</div>
+      </div>
+      <div class="option-photo-wrapper" style="margin-top:-1px;">
+        <img class="option-photo" src="https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?w=800&h=300&fit=crop" alt="Santorini caldera" loading="lazy" style="height:100px;">
+        <div class="option-photo-overlay">Santorini</div>
+      </div>
+      <div class="option-photo-wrapper" style="margin-top:-1px;">
+        <img class="option-photo" src="https://images.unsplash.com/photo-1555993539-1732b0258235?w=800&h=300&fit=crop" alt="Paros village" loading="lazy" style="height:100px;">
+        <div class="option-photo-overlay">Paros</div>
+      </div>
+      <div class="option-header green">Option A: "Highlights Reel" &mdash; Crete + Santorini + Paros</div>
+      <div class="option-body">
+        <div class="itinerary">
+          <span class="itin-day">Aug 9-10: Crete (Chania)</span>
+          <span class="itin-day">Aug 11-12: Santorini</span>
+          <span class="itin-day">Aug 13: Paros</span>
+          <span class="itin-day athens">Aug 14: Athens</span>
+          <span class="itin-day athens">Aug 15: Fly out</span>
+        </div>
+        <p><span class="label">The plan:</span> 2 nights Crete &rarr; 2 nights Santorini &rarr; 1 night Paros &rarr; 1 night Athens.</p>
+        <p><span class="label">Why:</span> The greatest hits of Greece in one trip. Crete's Venetian harbor of Chania, pink-sand Elafonisi, and incredible Cretan cuisine. Santorini's iconic caldera, Oia sunsets, and wine tours. Then a palate-cleanser night on Paros &mdash; charming Naoussa for a relaxed farewell dinner before heading back to Athens.</p>
+        <p><span class="label">Getting around:</span> Fly Athens&rarr;Chania (1h, ~&euro;50pp), ferry Crete&rarr;Santorini (2h), ferry Santorini&rarr;Paros (1.5h), ferry Paros&rarr;Athens (3h).</p>
+        <p><span class="label">Splitting up:</span> Anyone skipping Santorini can stay longer on Crete, or hop from Paros to Naxos (40 min) for a beach day.</p>
+        <p><span class="label">Estimated cost:</span> &euro;2,000-3,500 per couple for 6 nights</p>
+        <p class="pro">&check; 3 islands with maximum variety, Crete's food scene, Santorini's bucket-list views, Paros as a relaxing wind-down</p>
+        <p class="con">&cross; Most expensive option, Santorini tricky with toddlers, 1 flight + 3 ferries</p>
+      </div>
+    </div>
+
+    <!-- Option B: Cycladic Triangle -->
+    <div class="option-card">
+      <div class="option-photo-wrapper">
+        <img class="option-photo" src="https://images.unsplash.com/photo-1601581875039-e899893d520c?w=800&h=300&fit=crop" alt="Milos lunar beach" loading="lazy" style="height:100px;">
         <div class="option-photo-overlay">Milos</div>
       </div>
       <div class="option-photo-wrapper" style="margin-top:-1px;">
-        <img class="option-photo" src="https://images.unsplash.com/photo-1555993539-1732b0258235?w=800&h=300&fit=crop" alt="Paros village" loading="lazy" style="height:120px;">
+        <img class="option-photo" src="https://images.unsplash.com/photo-1555993539-1732b0258235?w=800&h=300&fit=crop" alt="Paros village" loading="lazy" style="height:100px;">
         <div class="option-photo-overlay">Paros</div>
       </div>
-      <div class="option-header green">Option A: "Cycladic Highlights" &mdash; Milos + Paros + Athens</div>
+      <div class="option-photo-wrapper" style="margin-top:-1px;">
+        <img class="option-photo" src="https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?w=800&h=300&fit=crop" alt="Santorini caldera" loading="lazy" style="height:100px;">
+        <div class="option-photo-overlay">Santorini</div>
+      </div>
+      <div class="option-header blue">Option B: "Cycladic Triangle" &mdash; Milos + Paros + Santorini</div>
       <div class="option-body">
         <div class="itinerary">
           <span class="itin-day">Aug 9-10: Milos</span>
           <span class="itin-day">Aug 11-12: Paros</span>
-          <span class="itin-day athens">Aug 13-14: Athens</span>
-          <span class="itin-day athens">Aug 15: Fly out</span>
-        </div>
-        <p><span class="label">The plan:</span> 2 nights Milos &rarr; 2 nights Paros &rarr; 2 nights Athens.</p>
-        <p><span class="label">Why:</span> The best of the Cyclades in one trip. Milos has otherworldly landscapes, sea caves (Kleftiko boat tour!), and Sarakiniko's lunar beach. Paros brings charming Naoussa, incredible food, and beautiful beaches. Finish with 2 relaxed days exploring Athens (Acropolis, Plaka, rooftop dinners) before flying out.</p>
-        <p><span class="label">Getting around:</span> Ferry Athens&rarr;Milos (3.5h), Milos&rarr;Paros (~2.5h), Paros&rarr;Athens (3h). All by ferry, no flights needed.</p>
-        <p><span class="label">Splitting up:</span> From Paros, quick ferry to Naxos (40 min) or Santorini (1.5h) for anyone who wants a detour.</p>
-        <p><span class="label">Estimated cost:</span> &euro;1,200-2,800 per couple for 6 nights</p>
-        <p class="pro">&check; Best Cycladic beaches, all-ferry route, relaxed Athens ending, great for kids on Paros</p>
-        <p class="con">&cross; Two ferry transit days, no Crete or Santorini in the base plan</p>
-      </div>
-    </div>
-
-    <!-- Option B: Crete + Santorini -->
-    <div class="option-card">
-      <div class="option-photo-wrapper">
-        <img class="option-photo" src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=800&h=300&fit=crop" alt="Crete coast" loading="lazy">
-        <div class="option-photo-overlay">Crete</div>
-      </div>
-      <div class="option-photo-wrapper" style="margin-top:-1px;">
-        <img class="option-photo" src="https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?w=800&h=300&fit=crop" alt="Santorini caldera" loading="lazy" style="height:120px;">
-        <div class="option-photo-overlay">Santorini</div>
-      </div>
-      <div class="option-header blue">Option B: "Island &amp; Mainland" &mdash; Crete + Santorini + Athens <span class="recommended-badge">Most Variety</span></div>
-      <div class="option-body">
-        <div class="itinerary">
-          <span class="itin-day">Aug 9-11: Crete (Chania)</span>
-          <span class="itin-day">Aug 12-13: Santorini</span>
+          <span class="itin-day">Aug 13: Santorini</span>
           <span class="itin-day athens">Aug 14: Athens</span>
           <span class="itin-day athens">Aug 15: Fly out</span>
         </div>
-        <p><span class="label">The plan:</span> 3 nights Crete &rarr; 2 nights Santorini &rarr; 1 night Athens.</p>
-        <p><span class="label">Why:</span> Crete is a world unto itself &mdash; the Venetian harbor of Chania, pink-sand Elafonisi beach, incredible Cretan cuisine (vegetarian paradise), and rich history. Then Santorini delivers the bucket-list caldera views, Oia sunsets, and wine tours. Quick flight back to Athens for a final evening together.</p>
-        <p><span class="label">Getting around:</span> Fly Athens&rarr;Chania (1h, ~&euro;50pp), ferry Crete&rarr;Santorini (2h), fly Santorini&rarr;Athens (45min, ~&euro;60pp).</p>
-        <p><span class="label">Splitting up:</span> Those skipping Santorini can stay longer in Crete or head back to Athens early for extra city time.</p>
-        <p><span class="label">Estimated cost:</span> &euro;1,800-3,500 per couple for 6 nights</p>
-        <p class="pro">&check; Maximum variety (big island + caldera + city), Crete's food scene is incredible, the ultimate Greek highlights reel</p>
-        <p class="con">&cross; Most expensive option, Santorini is tricky with toddlers, involves 2 flights, only 1 night in Athens</p>
+        <p><span class="label">The plan:</span> 2 nights Milos &rarr; 2 nights Paros &rarr; 1 night Santorini &rarr; 1 night Athens.</p>
+        <p><span class="label">Why:</span> The best of the Cyclades in one sweep. Milos for otherworldly landscapes, sea caves (Kleftiko boat tour!), and Sarakiniko's lunar beach. Paros for charming Naoussa, incredible food, and beautiful beaches &mdash; the sweet-spot island. Then cap it with a Santorini sunset before flying home.</p>
+        <p><span class="label">Getting around:</span> Ferry Athens&rarr;Milos (3.5h), ferry Milos&rarr;Paros (~2.5h), ferry Paros&rarr;Santorini (1.5h), fly Santorini&rarr;Athens (45min, ~&euro;60pp).</p>
+        <p><span class="label">Splitting up:</span> From Paros, quick ferry to Naxos (40 min) for a beach day. Anyone skipping Santorini can ferry Paros&rarr;Athens (3h) directly.</p>
+        <p><span class="label">Estimated cost:</span> &euro;1,800-3,000 per couple for 6 nights</p>
+        <p class="pro">&check; Best Cycladic beaches, 3 distinct island vibes, Paros is great for kids, Santorini as a 1-night highlight</p>
+        <p class="con">&cross; No Crete, 3 ferries + 1 flight, Santorini tricky with toddlers (but only 1 night)</p>
       </div>
     </div>
 
-    <!-- Option C: Milos + Crete -->
+    <!-- Option C: Best of Both -->
     <div class="option-card">
       <div class="option-photo-wrapper">
-        <img class="option-photo" src="https://images.unsplash.com/photo-1601581875039-e899893d520c?w=800&h=300&fit=crop" alt="Milos lunar beach" loading="lazy" style="height:120px;">
+        <img class="option-photo" src="https://images.unsplash.com/photo-1601581875039-e899893d520c?w=800&h=300&fit=crop" alt="Milos lunar beach" loading="lazy" style="height:100px;">
         <div class="option-photo-overlay">Milos</div>
       </div>
       <div class="option-photo-wrapper" style="margin-top:-1px;">
-        <img class="option-photo" src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=800&h=300&fit=crop" alt="Crete beach" loading="lazy">
+        <img class="option-photo" src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=800&h=300&fit=crop" alt="Crete coast" loading="lazy" style="height:100px;">
         <div class="option-photo-overlay">Crete</div>
       </div>
-      <div class="option-header orange">Option C: "Off the Beaten Path" &mdash; Milos + Crete + Athens</div>
+      <div class="option-photo-wrapper" style="margin-top:-1px;">
+        <img class="option-photo" src="https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?w=800&h=300&fit=crop" alt="Santorini caldera" loading="lazy" style="height:100px;">
+        <div class="option-photo-overlay">Santorini</div>
+      </div>
+      <div class="option-header orange">Option C: "Best of Both" &mdash; Milos + Crete + Santorini</div>
       <div class="option-body">
         <div class="itinerary">
           <span class="itin-day">Aug 9-10: Milos</span>
-          <span class="itin-day">Aug 11-13: Crete (Chania)</span>
+          <span class="itin-day">Aug 11-12: Crete (Chania)</span>
+          <span class="itin-day">Aug 13: Santorini</span>
           <span class="itin-day athens">Aug 14: Athens</span>
           <span class="itin-day athens">Aug 15: Fly out</span>
         </div>
-        <p><span class="label">The plan:</span> 2 nights Milos &rarr; 3 nights Crete &rarr; 1 night Athens.</p>
-        <p><span class="label">Why:</span> Milos for the dramatic coastline, sea caves, and turquoise water &mdash; equally photogenic as Santorini but far less crowded. Then Crete for 3 days of Venetian old town vibes, world-class Cretan cuisine (the best vegetarian food in Greece), and stunning beaches like Elafonisi and Balos.</p>
-        <p><span class="label">Getting around:</span> Ferry Athens&rarr;Milos (3.5h), ferry/fly Milos&rarr;Crete (ferry via Santorini ~4h, or seasonal direct flight), fly Crete&rarr;Athens (1h, ~&euro;50pp).</p>
-        <p><span class="label">Splitting up:</span> From Milos, 1.5h ferry to Santorini for anyone who wants the caldera experience before continuing to Crete.</p>
-        <p><span class="label">Estimated cost:</span> &euro;1,200-2,800 per couple for 6 nights</p>
-        <p class="pro">&check; Unique combo, avoids tourist crowds, amazing food on both islands, great value, Instagram-worthy</p>
-        <p class="con">&cross; Milos&rarr;Crete transit can be tricky (may need to connect via Santorini), less "classic postcard" feel</p>
+        <p><span class="label">The plan:</span> 2 nights Milos &rarr; 2 nights Crete &rarr; 1 night Santorini &rarr; 1 night Athens.</p>
+        <p><span class="label">Why:</span> The ultimate blend. Milos for dramatic coastline, sea caves (Kleftiko!), and turquoise water. Crete for Venetian Chania, world-class Cretan cuisine (the best vegetarian food in Greece), and stunning beaches. Then a Santorini sunset to cap it all off before flying home. Three completely different island experiences.</p>
+        <p><span class="label">Getting around:</span> Ferry Athens&rarr;Milos (3.5h), fly Milos&rarr;Crete (~1h, ~&euro;50pp), ferry Crete&rarr;Santorini (2h), fly Santorini&rarr;Athens (45min, ~&euro;60pp).</p>
+        <p><span class="label">Splitting up:</span> Anyone wanting more Crete time can skip Santorini and fly Crete&rarr;Athens directly. From Milos, 1.5h ferry to Santorini for an early visit.</p>
+        <p><span class="label">Estimated cost:</span> &euro;1,800-3,200 per couple for 6 nights</p>
+        <p class="pro">&check; Three very different islands, hidden gem + history + iconic views, amazing food throughout, Instagram-worthy</p>
+        <p class="con">&cross; Most complex logistics (2 flights + 2 ferries), Milos&rarr;Crete flight not daily in Aug</p>
       </div>
     </div>
 
@@ -845,10 +860,10 @@
       <h2>Pre-built Option Costs</h2>
       <p style="font-size:0.9em; color:var(--med-gray); margin-bottom:12px;">Quick-load an option to see the breakdown:</p>
       <div style="display:flex; gap:8px; flex-wrap:wrap;">
-        <button class="tab" onclick="loadPreset('a')" style="flex:1; min-width:140px;">Option A: Milos + Paros</button>
-        <button class="tab" onclick="loadPreset('b')" style="flex:1; min-width:140px;">Option B: Crete + Santorini</button>
-        <button class="tab" onclick="loadPreset('c')" style="flex:1; min-width:140px;">Option C: Milos + Crete</button>
-        <button class="tab" onclick="loadPreset('d')" style="flex:1; min-width:140px;">Option D: Grand Tour</button>
+        <button class="tab" onclick="loadPreset('a')" style="flex:1; min-width:140px;">A: Highlights Reel</button>
+        <button class="tab" onclick="loadPreset('b')" style="flex:1; min-width:140px;">B: Cycladic Triangle</button>
+        <button class="tab" onclick="loadPreset('c')" style="flex:1; min-width:140px;">C: Best of Both</button>
+        <button class="tab" onclick="loadPreset('d')" style="flex:1; min-width:140px;">D: Grand Tour</button>
       </div>
     </div>
 
@@ -885,9 +900,9 @@
         <h2>1. Which option do you prefer?</h2>
         <p class="helper">Pick the closest to your preference, or choose "Other" to suggest something different.</p>
         <div class="radio-group">
-          <div class="radio-pill"><input type="radio" name="option" id="opt-a" value="A"><label for="opt-a">A: Milos + Paros + Athens</label></div>
-          <div class="radio-pill"><input type="radio" name="option" id="opt-b" value="B"><label for="opt-b">B: Crete + Santorini + Athens</label></div>
-          <div class="radio-pill"><input type="radio" name="option" id="opt-c" value="C"><label for="opt-c">C: Milos + Crete + Athens</label></div>
+          <div class="radio-pill"><input type="radio" name="option" id="opt-a" value="A"><label for="opt-a">A: Crete + Santorini + Paros</label></div>
+          <div class="radio-pill"><input type="radio" name="option" id="opt-b" value="B"><label for="opt-b">B: Milos + Paros + Santorini</label></div>
+          <div class="radio-pill"><input type="radio" name="option" id="opt-c" value="C"><label for="opt-c">C: Milos + Crete + Santorini</label></div>
           <div class="radio-pill"><input type="radio" name="option" id="opt-d" value="D"><label for="opt-d">D: Grand Tour (all islands)</label></div>
           <div class="radio-pill"><input type="radio" name="option" id="opt-other" value="Other"><label for="opt-other">Other idea</label></div>
         </div>
@@ -1024,9 +1039,9 @@
     <div class="card">
       <h2>Vote Summary</h2>
       <div class="vote-summary" id="vote-summary">
-        <div class="vote-count"><div class="count" id="count-a">-</div><div class="label">Option A<br>Milos+Paros</div></div>
-        <div class="vote-count"><div class="count" id="count-b">-</div><div class="label">Option B<br>Crete+Santorini</div></div>
-        <div class="vote-count"><div class="count" id="count-c">-</div><div class="label">Option C<br>Milos+Crete</div></div>
+        <div class="vote-count"><div class="count" id="count-a">-</div><div class="label">Option A<br>Highlights Reel</div></div>
+        <div class="vote-count"><div class="count" id="count-b">-</div><div class="label">Option B<br>Cycladic Triangle</div></div>
+        <div class="vote-count"><div class="count" id="count-c">-</div><div class="label">Option C<br>Best of Both</div></div>
         <div class="vote-count"><div class="count" id="count-d">-</div><div class="label">Option D<br>Grand Tour</div></div>
         <div class="vote-count"><div class="count" id="count-other">-</div><div class="label">Other<br>Ideas</div></div>
       </div>
@@ -1243,17 +1258,44 @@ function loadPreset(option) {
   const nightsAth = document.getElementById('calc-nights-athens');
 
   if (option === 'a') {
-    calcA.value = 'milos'; nightsA.value = '2';
-    calcB.value = 'paros'; nightsB.value = '2';
-    nightsAth.value = '2';
-  } else if (option === 'b') {
-    calcA.value = 'crete'; nightsA.value = '3';
+    // Highlights Reel: 2n Crete + 2n Santorini + 1n Paros + 1n Athens
+    calcA.value = 'crete'; nightsA.value = '2';
     calcB.value = 'santorini'; nightsB.value = '2';
     nightsAth.value = '1';
-  } else if (option === 'c') {
+    updateCostCalc();
+    const aTotal = 2*200 + 2*450 + 1*300 + 1*180 + 84 + 50 + 46 + 82;
+    document.getElementById('calc-total').innerHTML = `\u20AC${aTotal.toLocaleString()} per couple (estimated)`;
+    document.getElementById('calc-breakdown').innerHTML =
+      '2 nights Crete (\u20AC200/night) + 2 nights Santorini (\u20AC450/night)<br>' +
+      '1 night Paros (\u20AC300/night) + 1 night Athens (\u20AC180/night)<br>' +
+      'Transit: Athens\u2192Crete flight (~\u20AC84) + Crete\u2192Santorini ferry (\u20AC50) + Santorini\u2192Paros ferry (\u20AC46) + Paros\u2192Athens ferry (\u20AC82)';
+    return;
+  } else if (option === 'b') {
+    // Cycladic Triangle: 2n Milos + 2n Paros + 1n Santorini + 1n Athens
     calcA.value = 'milos'; nightsA.value = '2';
-    calcB.value = 'crete'; nightsB.value = '3';
+    calcB.value = 'paros'; nightsB.value = '2';
     nightsAth.value = '1';
+    updateCostCalc();
+    const bTotal = 2*250 + 2*300 + 1*450 + 1*180 + 84 + 50 + 46 + 80;
+    document.getElementById('calc-total').innerHTML = `\u20AC${bTotal.toLocaleString()} per couple (estimated)`;
+    document.getElementById('calc-breakdown').innerHTML =
+      '2 nights Milos (\u20AC250/night) + 2 nights Paros (\u20AC300/night)<br>' +
+      '1 night Santorini (\u20AC450/night) + 1 night Athens (\u20AC180/night)<br>' +
+      'Transit: Athens\u2192Milos ferry (\u20AC84) + Milos\u2192Paros ferry (~\u20AC50) + Paros\u2192Santorini ferry (\u20AC46) + Santorini\u2192Athens flight (~\u20AC80)';
+    return;
+  } else if (option === 'c') {
+    // Best of Both: 2n Milos + 2n Crete + 1n Santorini + 1n Athens
+    calcA.value = 'milos'; nightsA.value = '2';
+    calcB.value = 'crete'; nightsB.value = '2';
+    nightsAth.value = '1';
+    updateCostCalc();
+    const cTotal = 2*250 + 2*200 + 1*450 + 1*180 + 84 + 100 + 50 + 80;
+    document.getElementById('calc-total').innerHTML = `\u20AC${cTotal.toLocaleString()} per couple (estimated)`;
+    document.getElementById('calc-breakdown').innerHTML =
+      '2 nights Milos (\u20AC250/night) + 2 nights Crete (\u20AC200/night)<br>' +
+      '1 night Santorini (\u20AC450/night) + 1 night Athens (\u20AC180/night)<br>' +
+      'Transit: Athens\u2192Milos ferry (\u20AC84) + Milos\u2192Crete flight (~\u20AC100) + Crete\u2192Santorini ferry (\u20AC50) + Santorini\u2192Athens flight (~\u20AC80)';
+    return;
   } else if (option === 'd') {
     // Grand tour: 2 Milos + 2 Crete + 1 Santorini + 1 Paros = 6 nights, 0 Athens
     // Calculator only has 2 island slots, so we show a custom calculation
@@ -1320,30 +1362,30 @@ function initMap() {
     }).addTo(map).bindTooltip(isl.name, { permanent: false, direction: 'top', className: 'island-label' });
   });
 
-  // Route A (green): Athens -> Milos -> Paros -> Athens
+  // Route A (green): Athens ✈ Crete -> Santorini -> Paros -> Athens
   routeLayers.a.push(
-    L.polyline([[islands.athens.lat, islands.athens.lng],[islands.milos.lat, islands.milos.lng]], { color: '#27ae60', weight: 3, opacity: 0.9, className: 'animated-route' }).addTo(map),
-    L.polyline([[islands.milos.lat, islands.milos.lng],[islands.paros.lat, islands.paros.lng]], { color: '#27ae60', weight: 3, opacity: 0.9, className: 'animated-route' }).addTo(map),
+    L.polyline([[islands.athens.lat, islands.athens.lng],[islands.crete.lat, islands.crete.lng]], { color: '#27ae60', weight: 3, opacity: 0.9, dashArray: '12,6', className: 'animated-route' }).addTo(map), // flight
+    L.polyline([[islands.crete.lat, islands.crete.lng],[islands.santorini.lat, islands.santorini.lng]], { color: '#27ae60', weight: 3, opacity: 0.9, className: 'animated-route' }).addTo(map),
+    L.polyline([[islands.santorini.lat, islands.santorini.lng],[islands.paros.lat, islands.paros.lng]], { color: '#27ae60', weight: 3, opacity: 0.9, className: 'animated-route' }).addTo(map),
     L.polyline([[islands.paros.lat, islands.paros.lng],[islands.athens.lat, islands.athens.lng]], { color: '#27ae60', weight: 3, opacity: 0.9, className: 'animated-route' }).addTo(map),
-    // Optional side-trips from Paros
-    L.polyline([[islands.paros.lat, islands.paros.lng],[islands.naxos.lat, islands.naxos.lng]], { color: '#27ae60', weight: 2, opacity: 0.5, dashArray: '8,8' }).addTo(map),
-    L.polyline([[islands.paros.lat, islands.paros.lng],[islands.santorini.lat, islands.santorini.lng]], { color: '#27ae60', weight: 2, opacity: 0.5, dashArray: '8,8' }).addTo(map)
+    // Optional side-trip: Paros -> Naxos
+    L.polyline([[islands.paros.lat, islands.paros.lng],[islands.naxos.lat, islands.naxos.lng]], { color: '#27ae60', weight: 2, opacity: 0.5, dashArray: '8,8' }).addTo(map)
   );
 
-  // Route B (blue): Athens -> Crete -> Santorini -> Athens
+  // Route B (blue): Cycladic Triangle — Athens → Milos → Paros → Santorini ✈ Athens
   routeLayers.b.push(
-    L.polyline([[islands.athens.lat, islands.athens.lng],[islands.crete.lat, islands.crete.lng]], { color: '#1a5276', weight: 3, opacity: 0.9, className: 'animated-route' }).addTo(map),
-    L.polyline([[islands.crete.lat, islands.crete.lng],[islands.santorini.lat, islands.santorini.lng]], { color: '#1a5276', weight: 3, opacity: 0.9, className: 'animated-route' }).addTo(map),
-    L.polyline([[islands.santorini.lat, islands.santorini.lng],[islands.athens.lat, islands.athens.lng]], { color: '#1a5276', weight: 3, opacity: 0.9, className: 'animated-route' }).addTo(map)
+    L.polyline([[islands.athens.lat, islands.athens.lng],[islands.milos.lat, islands.milos.lng]], { color: '#1a5276', weight: 3, opacity: 0.9, className: 'animated-route' }).addTo(map), // ferry
+    L.polyline([[islands.milos.lat, islands.milos.lng],[islands.paros.lat, islands.paros.lng]], { color: '#1a5276', weight: 3, opacity: 0.9, className: 'animated-route' }).addTo(map), // ferry
+    L.polyline([[islands.paros.lat, islands.paros.lng],[islands.santorini.lat, islands.santorini.lng]], { color: '#1a5276', weight: 3, opacity: 0.9, className: 'animated-route' }).addTo(map), // ferry
+    L.polyline([[islands.santorini.lat, islands.santorini.lng],[islands.athens.lat, islands.athens.lng]], { color: '#1a5276', weight: 3, opacity: 0.9, dashArray: '12,6', className: 'animated-route' }).addTo(map) // flight
   );
 
-  // Route C (orange): Athens -> Milos -> Crete -> Athens
+  // Route C (orange): Best of Both — Athens → Milos ✈ Crete → Santorini ✈ Athens
   routeLayers.c.push(
-    L.polyline([[islands.athens.lat, islands.athens.lng],[islands.milos.lat, islands.milos.lng]], { color: '#e67e22', weight: 3, opacity: 0.9, className: 'animated-route' }).addTo(map),
-    L.polyline([[islands.milos.lat, islands.milos.lng],[islands.crete.lat, islands.crete.lng]], { color: '#e67e22', weight: 3, opacity: 0.9, className: 'animated-route' }).addTo(map),
-    L.polyline([[islands.crete.lat, islands.crete.lng],[islands.athens.lat, islands.athens.lng]], { color: '#e67e22', weight: 3, opacity: 0.9, className: 'animated-route' }).addTo(map),
-    // Optional side-trip: Milos -> Santorini
-    L.polyline([[islands.milos.lat, islands.milos.lng],[islands.santorini.lat, islands.santorini.lng]], { color: '#e67e22', weight: 2, opacity: 0.5, dashArray: '8,8' }).addTo(map)
+    L.polyline([[islands.athens.lat, islands.athens.lng],[islands.milos.lat, islands.milos.lng]], { color: '#e67e22', weight: 3, opacity: 0.9, className: 'animated-route' }).addTo(map), // ferry
+    L.polyline([[islands.milos.lat, islands.milos.lng],[islands.crete.lat, islands.crete.lng]], { color: '#e67e22', weight: 3, opacity: 0.9, dashArray: '12,6', className: 'animated-route' }).addTo(map), // flight
+    L.polyline([[islands.crete.lat, islands.crete.lng],[islands.santorini.lat, islands.santorini.lng]], { color: '#e67e22', weight: 3, opacity: 0.9, className: 'animated-route' }).addTo(map), // ferry
+    L.polyline([[islands.santorini.lat, islands.santorini.lng],[islands.athens.lat, islands.athens.lng]], { color: '#e67e22', weight: 3, opacity: 0.9, dashArray: '12,6', className: 'animated-route' }).addTo(map) // flight
   );
 
   // Route D (purple): Athens -> Milos -> Crete -> Santorini -> Naxos -> Paros -> Athens
@@ -1581,7 +1623,7 @@ async function loadResults() {
     const list = document.getElementById('results-list');
     if (!votes || !votes.length) { list.innerHTML = '<div class="no-results">No votes yet. Be the first!</div>'; return; }
 
-    const oLabels = { 'A':'Option A: Milos + Paros + Athens','B':'Option B: Crete + Santorini + Athens','C':'Option C: Milos + Crete + Athens','D':'Option D: Grand Tour','Other':'Custom Idea' };
+    const oLabels = { 'A':'Option A: Highlights Reel (Crete+Santorini+Paros)','B':'Option B: Cycladic Triangle (Milos+Paros+Santorini)','C':'Option C: Best of Both (Milos+Crete+Santorini)','D':'Option D: Grand Tour','Other':'Custom Idea' };
     const sLabels = { 'must-have':'Must-have','nice-to-have':'Nice to have','skip':'Happy to skip','no-preference':'No preference' };
     const tLabels = { ferry:'Prefers ferries', flights:'Prefers flights', 'no-preference':'No preference' };
 
