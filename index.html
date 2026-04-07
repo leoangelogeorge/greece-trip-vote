@@ -138,8 +138,9 @@
   /* Photo banner for option cards */
   .option-photo {
     width: 100%; height: 180px; object-fit: cover; display: block;
-    position: relative;
+    position: relative; background: linear-gradient(135deg, var(--light-blue), var(--sand, #f5e6d3));
   }
+  .option-photo[data-failed] { display: none; }
   .option-photo-wrapper {
     position: relative; overflow: hidden;
   }
@@ -1451,10 +1452,21 @@ async function toggleUpvote(itemId) {
 // ---- Init ----
 document.addEventListener('DOMContentLoaded', () => {
   initMap();
+  // Fix Leaflet tile rendering - invalidate size after a short delay
+  setTimeout(() => { if (map) map.invalidateSize(); }, 200);
+  setTimeout(() => { if (map) map.invalidateSize(); }, 1000);
   updateCostCalc();
   // Restore name from localStorage
   const savedName = localStorage.getItem('wl_name');
   if (savedName) document.getElementById('wl-name').value = savedName;
+  // Handle broken images gracefully — hide wrapper if image fails
+  document.querySelectorAll('.option-photo').forEach(img => {
+    img.onerror = () => {
+      img.setAttribute('data-failed', 'true');
+      const wrapper = img.closest('.option-photo-wrapper');
+      if (wrapper) wrapper.style.display = 'none';
+    };
+  });
 });
 </script>
 
