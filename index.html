@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Greece Island-Hopping - Vote!</title>
+<style>
+  :root {
+    --blue: #1a5276;
+    --light-blue: #d6eaf8;
+    --dark: #2c3e50;
+    --med-gray: #566573;
+    --light-gray: #f8f9fa;
+    --white: #ffffff;
+    --green: #27ae60;
+    --orange: #e67e22;
+    --red: #c0392b;
+    --sand: #f5e6d3;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #d6eaf8 0%, #f5e6d3 50%, #d6eaf8 100%);
+    min-height: 100vh;
+    color: var(--dark);
+    line-height: 1.6;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  /* Header */
+  .hero {
+    text-align: center;
+    padding: 40px 20px 30px;
+    background: linear-gradient(135deg, var(--blue) 0%, #2980b9 100%);
+    border-radius: 16px;
+    color: white;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 24px rgba(26, 82, 118, 0.3);
+  }
+  .hero h1 { font-size: 2em; margin-bottom: 4px; }
+  .hero .dates { font-size: 1.1em; opacity: 0.9; }
+  .hero .subtitle { font-size: 0.95em; opacity: 0.75; margin-top: 8px; }
+
+  /* Tabs */
+  .tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .tab {
+    flex: 1;
+    min-width: 120px;
+    padding: 12px 16px;
+    border: 2px solid var(--blue);
+    border-radius: 10px;
+    background: white;
+    color: var(--blue);
+    font-weight: 600;
+    font-size: 0.95em;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s;
+  }
+  .tab:hover { background: var(--light-blue); }
+  .tab.active { background: var(--blue); color: white; }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* Cards */
+  .card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+  .card h2 {
+    color: var(--blue);
+    font-size: 1.3em;
+    margin-bottom: 12px;
+  }
+  .card h3 {
+    font-size: 1.05em;
+    margin-bottom: 8px;
+  }
+
+  /* Setup bullets */
+  .setup-list { list-style: none; padding: 0; }
+  .setup-list li {
+    padding: 6px 0 6px 24px;
+    position: relative;
+  }
+  .setup-list li::before {
+    content: "\2022";
+    color: var(--blue);
+    font-weight: bold;
+    position: absolute;
+    left: 8px;
+  }
+
+  /* Island comparison table */
+  .island-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 0.9em;
+  }
+  .island-table th {
+    background: var(--blue);
+    color: white;
+    padding: 10px 8px;
+    text-align: left;
+    font-size: 0.85em;
+  }
+  .island-table td {
+    padding: 10px 8px;
+    border-bottom: 1px solid #eee;
+  }
+  .island-table tr:nth-child(even) { background: var(--light-gray); }
+  .island-table .cost { font-weight: 600; text-align: center; }
+  .island-table .ferry { text-align: center; font-size: 0.85em; color: var(--med-gray); }
+
+  .table-note {
+    font-size: 0.8em;
+    color: var(--med-gray);
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  /* Warning box */
+  .warning {
+    background: #fef5e7;
+    border-left: 4px solid var(--orange);
+    padding: 14px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 16px 0;
+    font-size: 0.9em;
+  }
+  .warning strong { color: var(--orange); }
+
+  /* Option cards */
+  .option-card {
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+  .option-header {
+    padding: 14px 20px;
+    color: white;
+    font-weight: 700;
+    font-size: 1.05em;
+  }
+  .option-header.green { background: var(--green); }
+  .option-header.blue { background: var(--blue); }
+  .option-header.orange { background: var(--orange); }
+  .option-body {
+    background: white;
+    padding: 20px;
+  }
+  .option-body p { margin-bottom: 8px; font-size: 0.92em; }
+  .option-body .label { font-weight: 600; color: var(--dark); }
+  .pro { color: var(--green); font-size: 0.88em; margin-top: 8px; }
+  .con { color: var(--red); font-size: 0.88em; }
+  .recommended-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.25);
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    margin-left: 8px;
+  }
+
+  /* Form */
+  .form-section {
+    margin-bottom: 24px;
+  }
+  .form-section label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--dark);
+  }
+  .form-section .helper {
+    font-size: 0.82em;
+    color: var(--med-gray);
+    margin-bottom: 8px;
+  }
+
+  input[type="text"], textarea, select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.95em;
+    font-family: inherit;
+    transition: border-color 0.2s;
+  }
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--blue);
+  }
+  textarea { resize: vertical; min-height: 60px; }
+
+  .radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .radio-pill {
+    display: flex;
+    align-items: center;
+  }
+  .radio-pill input[type="radio"] { display: none; }
+  .radio-pill label {
+    padding: 8px 16px;
+    border: 2px solid #ddd;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+  .radio-pill input:checked + label {
+    border-color: var(--blue);
+    background: var(--light-blue);
+    color: var(--blue);
+  }
+  .radio-pill label:hover {
+    border-color: var(--blue);
+  }
+
+  .checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 8px 0;
+  }
+  .checkbox-row input[type="checkbox"] {
+    width: 18px; height: 18px;
+    accent-color: var(--blue);
+  }
+
+  .submit-btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, var(--blue), #2980b9);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.05em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.2s;
+    box-shadow: 0 4px 16px rgba(26, 82, 118, 0.3);
+  }
+  .submit-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(26, 82, 118, 0.4); }
+  .submit-btn:active { transform: translateY(0); }
+  .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+  /* Results */
+  .result-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    border-left: 4px solid var(--blue);
+  }
+  .result-card .voter { font-weight: 700; color: var(--blue); font-size: 1.1em; margin-bottom: 8px; }
+  .result-card .detail { font-size: 0.9em; margin-bottom: 4px; color: var(--dark); }
+  .result-card .detail strong { color: var(--med-gray); }
+  .result-card .comment {
+    margin-top: 8px;
+    padding: 10px;
+    background: var(--light-gray);
+    border-radius: 8px;
+    font-size: 0.88em;
+    color: var(--med-gray);
+  }
+
+  .vote-summary {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .vote-count {
+    flex: 1;
+    min-width: 100px;
+    text-align: center;
+    padding: 16px;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .vote-count .count { font-size: 2em; font-weight: 700; color: var(--blue); }
+  .vote-count .label { font-size: 0.8em; color: var(--med-gray); }
+
+  .no-results {
+    text-align: center;
+    padding: 40px;
+    color: var(--med-gray);
+    font-style: italic;
+  }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--green);
+    color: white;
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-weight: 600;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+    z-index: 100;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+  .toast.error { background: var(--red); }
+
+  /* Logistics */
+  .logistics-list { list-style: none; padding: 0; }
+  .logistics-list li {
+    padding: 8px 0 8px 28px;
+    position: relative;
+    font-size: 0.92em;
+  }
+  .logistics-list li::before {
+    content: "\2139";
+    position: absolute;
+    left: 4px;
+    color: var(--blue);
+    font-weight: bold;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 1.5em; }
+    .tabs { flex-direction: column; }
+    .tab { min-width: unset; }
+    .island-table { font-size: 0.78em; }
+    .vote-summary { flex-direction: column; }
+    .radio-group { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Hero -->
+  <div class="hero">
+    <h1>Greece Island-Hopping</h1>
+    <div class="dates">Aug 9 - 15, 2026</div>
+    <div class="subtitle">Review the options, then cast your vote below!</div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('info')">The Options</button>
+    <button class="tab" onclick="switchTab('vote')">Cast Your Vote</button>
+    <button class="tab" onclick="switchTab('results')">See Results</button>
+  </div>
+
+  <!-- ===== INFO TAB ===== -->
+  <div id="tab-info" class="tab-content active">
+
+    <div class="card">
+      <h2>The Setup</h2>
+      <ul class="setup-list">
+        <li>After Ola & Awse's wedding in Athens (Aug 6-8), we have <strong>6 nights (Aug 9-15)</strong> to explore the Greek islands together.</li>
+        <li>The group: <strong>4 couples + 2 kids</strong> (including a 3-year-old).</li>
+        <li>Starting point: Athens (Piraeus port).</li>
+        <li>Everyone is vegetarian-friendly.</li>
+        <li>We're open to splitting up for parts of the trip if people want different things.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Quick Island Cheat Sheet</h2>
+      <table class="island-table">
+        <thead>
+          <tr>
+            <th>Island</th>
+            <th>Vibe</th>
+            <th>Best For</th>
+            <th>Daily Cost (couple)</th>
+            <th>Ferry from Athens</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Naxos</strong></td>
+            <td>Relaxed, traditional, sandy beaches</td>
+            <td>Families & budget</td>
+            <td class="cost">&euro;150-400</td>
+            <td class="ferry">3.5h, ~&euro;43/pp</td>
+          </tr>
+          <tr>
+            <td><strong>Paros</strong></td>
+            <td>Trendy, charming villages, great food</td>
+            <td>Couples & foodies</td>
+            <td class="cost">&euro;200-450</td>
+            <td class="ferry">3h, ~&euro;41/pp</td>
+          </tr>
+          <tr>
+            <td><strong>Milos</strong></td>
+            <td>Dramatic geology, sea caves, turquoise</td>
+            <td>Adventurers</td>
+            <td class="cost">&euro;150-400</td>
+            <td class="ferry">2.5h, ~&euro;42/pp</td>
+          </tr>
+          <tr>
+            <td><strong>Santorini</strong></td>
+            <td>Iconic caldera, sunsets, luxury</td>
+            <td>Bucket-listers</td>
+            <td class="cost">&euro;300-600</td>
+            <td class="ferry">5h, ~&euro;46/pp</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="table-note">Daily costs include accommodation + food + activities. Ferries between neighboring islands: &euro;15-30/person, 30min-2h.</p>
+    </div>
+
+    <div class="warning">
+      <strong>A note on Santorini with toddlers:</strong> Steep stairs, unprotected drops in caldera villages, no stroller access, volcanic pebble beaches (not sandy). Doable as a day trip/overnight, but probably shouldn't be our main base.
+    </div>
+
+    <!-- Option A -->
+    <div class="option-card">
+      <div class="option-header green">Option A: "Base Camp Naxos" &mdash; Most Budget-Friendly</div>
+      <div class="option-body">
+        <p><span class="label">The plan:</span> All 6 nights on Naxos.</p>
+        <p><span class="label">Why:</span> #1 rated family island in Greece. Sandy beaches stay ankle-deep for 50m out (great for kids). 40% cheaper than Santorini. Excellent vegetarian tavernas &mdash; fresh produce, local cheese, traditional dishes.</p>
+        <p><span class="label">Splitting up:</span> Day-trip to Paros (40 min ferry) or Santorini (1.5h ferry) for those who want to explore.</p>
+        <p><span class="label">Estimated cost:</span> &euro;900-2,500 per couple for 6 nights</p>
+        <p class="pro">&check; Cheapest, most relaxed, best for kids, no extra ferry logistics</p>
+        <p class="con">&cross; Less "wow factor" than Santorini, only one island</p>
+      </div>
+    </div>
+
+    <!-- Option B -->
+    <div class="option-card">
+      <div class="option-header blue">Option B: "Split Base" Paros + Santorini <span class="recommended-badge">Recommended</span></div>
+      <div class="option-body">
+        <p><span class="label">The plan:</span> 3 nights Paros &rarr; then split: 3 nights Santorini OR stay on Paros/hop to Naxos.</p>
+        <p><span class="label">Why:</span> Everyone gets 3 days together on Paros (great food, beautiful villages). Then Santorini fans take a 1.5h ferry, while others stay on Paros or hop to Naxos (40 min) for a cheaper, more relaxed second half.</p>
+        <p><span class="label">Splitting up:</span> The group naturally splits by preference and budget. Paros, Naxos, and Santorini are all within 40min-1.5h of each other.</p>
+        <p><span class="label">Estimated cost:</span> &euro;1,500-3,000 per couple for 6 nights</p>
+        <p class="pro">&check; Gives everyone options, respects different budgets, Paros is the sweet-spot island</p>
+        <p class="con">&cross; Requires coordinating a split, slightly more logistics</p>
+      </div>
+    </div>
+
+    <!-- Option C -->
+    <div class="option-card">
+      <div class="option-header orange">Option C: "Hidden Gems" Naxos + Milos &mdash; Most Unique</div>
+      <div class="option-body">
+        <p><span class="label">The plan:</span> 3 nights Naxos &rarr; 3 nights Milos.</p>
+        <p><span class="label">Why:</span> Naxos anchors the family-friendly beach days. Milos offers otherworldly landscapes, sea caves (boat tour to Kleftiko is a must!), turquoise water &mdash; as photogenic as Santorini but far less crowded and cheaper.</p>
+        <p><span class="label">Splitting up:</span> From Milos, it's 1.5h by ferry to Santorini for anyone who still wants to visit.</p>
+        <p><span class="label">Estimated cost:</span> &euro;1,000-2,500 per couple for 6 nights</p>
+        <p class="pro">&check; Unique experience, great value, less crowded, Instagram-worthy</p>
+        <p class="con">&cross; Two ferry travel days, Milos is less "classic Greece postcard"</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Logistics to Know</h2>
+      <ul class="logistics-list">
+        <li><strong>August is peak season</strong> &mdash; we should book accommodation in the next 2-3 weeks.</li>
+        <li><strong>Meltemi winds</strong> in August can occasionally delay high-speed ferries (conventional ferries are more reliable).</li>
+        <li><strong>Ferry booking:</strong> <a href="https://www.ferryhopper.com" target="_blank">Ferryhopper.com</a> is the easiest way to book.</li>
+        <li>For our group size, <strong>villa/apartment rentals</strong> can be much better value than hotels.</li>
+        <li>Inter-island ferries: Paros&harr;Naxos (40min), Paros&harr;Santorini (1.5h), Naxos&harr;Milos (2-3h).</li>
+      </ul>
+    </div>
+
+    <div style="text-align: center; padding: 20px 0;">
+      <button class="submit-btn" onclick="switchTab('vote')" style="max-width: 400px;">Ready? Cast Your Vote &rarr;</button>
+    </div>
+  </div>
+
+  <!-- ===== VOTE TAB ===== -->
+  <div id="tab-vote" class="tab-content">
+    <form id="vote-form" onsubmit="submitVote(event)">
+
+      <div class="card">
+        <div class="form-section">
+          <label>Your Name</label>
+          <input type="text" id="voter_name" required placeholder="e.g. Akul & Tarishi">
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>1. Which option do you prefer?</h2>
+        <p class="helper">Pick the one closest to your preference, or choose "Other" to suggest something different.</p>
+        <div class="radio-group">
+          <div class="radio-pill">
+            <input type="radio" name="option" id="opt-a" value="A">
+            <label for="opt-a">A: Base Camp Naxos</label>
+          </div>
+          <div class="radio-pill">
+            <input type="radio" name="option" id="opt-b" value="B">
+            <label for="opt-b">B: Paros + Santorini</label>
+          </div>
+          <div class="radio-pill">
+            <input type="radio" name="option" id="opt-c" value="C">
+            <label for="opt-c">C: Naxos + Milos</label>
+          </div>
+          <div class="radio-pill">
+            <input type="radio" name="option" id="opt-other" value="Other">
+            <label for="opt-other">Other idea</label>
+          </div>
+        </div>
+        <div id="custom-option-wrapper" style="display:none; margin-top: 8px;">
+          <textarea id="custom_option" placeholder="Describe your alternative idea... (e.g. 'What about Corfu?' or 'How about 2 nights Paros + 2 Naxos + 2 Milos?')"></textarea>
+        </div>
+        <div style="margin-top: 12px;">
+          <label style="font-weight: 400; font-size: 0.9em;">Any thoughts on the options?</label>
+          <textarea id="option_notes" placeholder="Optional: What do you like/dislike about the options? Any modifications you'd suggest?" rows="2"></textarea>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>2. Budget Comfort Level</h2>
+        <p class="helper">Per couple, for the 6 island nights (accommodation + food + activities). Not including flights to/from Athens.</p>
+        <div class="radio-group">
+          <div class="radio-pill">
+            <input type="radio" name="budget" id="bud-1" value="Under €1,000">
+            <label for="bud-1">Under &euro;1,000</label>
+          </div>
+          <div class="radio-pill">
+            <input type="radio" name="budget" id="bud-2" value="€1,000-1,500">
+            <label for="bud-2">&euro;1,000-1,500</label>
+          </div>
+          <div class="radio-pill">
+            <input type="radio" name="budget" id="bud-3" value="€1,500-2,500">
+            <label for="bud-3">&euro;1,500-2,500</label>
+          </div>
+          <div class="radio-pill">
+            <input type="radio" name="budget" id="bud-4" value="€2,500+">
+            <label for="bud-4">&euro;2,500+</label>
+          </div>
+          <div class="radio-pill">
+            <input type="radio" name="budget" id="bud-flex" value="Flexible">
+            <label for="bud-flex">Flexible</label>
+          </div>
+        </div>
+        <textarea id="budget_notes" placeholder="Optional: Any budget notes? (e.g. 'Happy to splurge on one nice dinner but want budget accommodation')" rows="2" style="margin-top: 8px;"></textarea>
+      </div>
+
+      <div class="card">
+        <h2>3. Santorini &mdash; How important is it?</h2>
+        <div class="radio-group">
+          <div class="radio-pill">
+            <input type="radio" name="santorini" id="sant-must" value="must-have">
+            <label for="sant-must">Must-have</label>
+          </div>
+          <div class="radio-pill">
+            <input type="radio" name="santorini" id="sant-nice" value="nice-to-have">
+            <label for="sant-nice">Nice to have</label>
+          </div>
+          <div class="radio-pill">
+            <input type="radio" name="santorini" id="sant-skip" value="skip">
+            <label for="sant-skip">Happy to skip</label>
+          </div>
+          <div class="radio-pill">
+            <input type="radio" name="santorini" id="sant-np" value="no-preference">
+            <label for="sant-np">No preference</label>
+          </div>
+        </div>
+        <textarea id="santorini_notes" placeholder="Optional: Any thoughts? (e.g. 'Would love a sunset there' or 'Already been, happy to skip')" rows="2" style="margin-top: 8px;"></textarea>
+      </div>
+
+      <div class="card">
+        <h2>4. Islands you've already visited?</h2>
+        <textarea id="islands_visited" placeholder="e.g. 'Been to Crete and Mykonos' or 'First time in Greece!'" rows="2"></textarea>
+      </div>
+
+      <div class="card">
+        <h2>5. Getting between islands</h2>
+        <div class="radio-group">
+          <div class="radio-pill">
+            <input type="radio" name="transport" id="tr-ferry" value="ferry">
+            <label for="tr-ferry">Prefer ferries</label>
+          </div>
+          <div class="radio-pill">
+            <input type="radio" name="transport" id="tr-flight" value="flights">
+            <label for="tr-flight">Prefer flights</label>
+          </div>
+          <div class="radio-pill">
+            <input type="radio" name="transport" id="tr-np" value="no-preference">
+            <label for="tr-np">No preference</label>
+          </div>
+        </div>
+        <textarea id="transport_notes" placeholder="Optional: Any concerns? (e.g. 'Get seasick easily' or 'Kids love boats!')" rows="2" style="margin-top: 8px;"></textarea>
+      </div>
+
+      <div class="card">
+        <h2>6. Availability</h2>
+        <div class="checkbox-row">
+          <input type="checkbox" id="available_all" checked onchange="toggleAvailability()">
+          <label for="available_all" style="font-weight: 400;">I'm available for all dates (Aug 9-15)</label>
+        </div>
+        <div id="availability-notes-wrapper" style="display: none; margin-top: 8px;">
+          <textarea id="availability_notes" placeholder="Which dates don't work? When are you joining/leaving?" rows="2"></textarea>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>7. Anything else?</h2>
+        <p class="helper">Wild ideas, concerns, must-dos, dietary needs, accessibility requirements &mdash; anything at all!</p>
+        <textarea id="general_comments" placeholder="Free text: share any thoughts, alternative suggestions, or things we should consider..." rows="4"></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submit-btn">Submit My Vote</button>
+      <p style="text-align: center; font-size: 0.82em; color: var(--med-gray); margin-top: 8px;">
+        You can update your vote anytime by submitting again with the same name.
+      </p>
+    </form>
+  </div>
+
+  <!-- ===== RESULTS TAB ===== -->
+  <div id="tab-results" class="tab-content">
+    <div class="card">
+      <h2>Vote Summary</h2>
+      <div class="vote-summary" id="vote-summary">
+        <div class="vote-count"><div class="count" id="count-a">-</div><div class="label">Option A<br>Naxos</div></div>
+        <div class="vote-count"><div class="count" id="count-b">-</div><div class="label">Option B<br>Paros+Santorini</div></div>
+        <div class="vote-count"><div class="count" id="count-c">-</div><div class="label">Option C<br>Naxos+Milos</div></div>
+        <div class="vote-count"><div class="count" id="count-other">-</div><div class="label">Other<br>Ideas</div></div>
+      </div>
+    </div>
+
+    <h2 style="color: var(--blue); margin-bottom: 12px;">Individual Responses</h2>
+    <div id="results-list">
+      <div class="no-results">Loading results...</div>
+    </div>
+    <div style="text-align: center; margin-top: 16px;">
+      <button class="tab" onclick="loadResults()" style="display: inline-block; flex: none;">Refresh Results</button>
+    </div>
+  </div>
+
+  <div style="text-align: center; padding: 24px 0 16px; font-size: 0.8em; color: var(--med-gray);">
+    Put together by Leo &mdash; let's lock something in soon!
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+  // ---- Supabase Config ----
+  const SUPABASE_URL = 'https://kkkvjdlrqaobuejpxxqj.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imtra3ZqZGxycWFvYnVlanB4eHFqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM1MDY2MTgsImV4cCI6MjA4OTA4MjYxOH0.t_17paaeik1MXkukqx2PXB7p8zsdBUAQX2OZ9cw-3dI';
+  const TRIP_ID = '1d995e98-2e8b-4b31-965a-4dc8232c0645';
+
+  // ---- Tab Switching ----
+  function switchTab(tab) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.getElementById('tab-' + tab).classList.add('active');
+    // Highlight correct tab button
+    const labels = { info: 'The Options', vote: 'Cast Your Vote', results: 'See Results' };
+    document.querySelectorAll('.tab').forEach(t => {
+      if (t.textContent.trim() === labels[tab]) t.classList.add('active');
+    });
+    if (tab === 'results') loadResults();
+  }
+
+  // ---- Show/hide custom option ----
+  document.querySelectorAll('input[name="option"]').forEach(r => {
+    r.addEventListener('change', () => {
+      document.getElementById('custom-option-wrapper').style.display =
+        r.value === 'Other' && r.checked ? 'block' : 'none';
+    });
+  });
+
+  // ---- Availability toggle ----
+  function toggleAvailability() {
+    const checked = document.getElementById('available_all').checked;
+    document.getElementById('availability-notes-wrapper').style.display = checked ? 'none' : 'block';
+  }
+
+  // ---- Toast ----
+  function showToast(msg, isError = false) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.className = 'toast show' + (isError ? ' error' : '');
+    setTimeout(() => t.className = 'toast', 3000);
+  }
+
+  // ---- Supabase helpers ----
+  async function supabaseRequest(path, options = {}) {
+    const res = await fetch(SUPABASE_URL + '/rest/v1/' + path, {
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_KEY,
+        'Content-Type': 'application/json',
+        'Prefer': options.prefer || 'return=representation',
+        ...options.extraHeaders
+      },
+      method: options.method || 'GET',
+      body: options.body ? JSON.stringify(options.body) : undefined
+    });
+    if (!res.ok) {
+      const err = await res.text();
+      throw new Error(err);
+    }
+    const text = await res.text();
+    return text ? JSON.parse(text) : null;
+  }
+
+  // ---- Submit Vote ----
+  async function submitVote(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Submitting...';
+
+    try {
+      const name = document.getElementById('voter_name').value.trim();
+      const option = document.querySelector('input[name="option"]:checked');
+      const budget = document.querySelector('input[name="budget"]:checked');
+      const santorini = document.querySelector('input[name="santorini"]:checked');
+      const transport = document.querySelector('input[name="transport"]:checked');
+
+      if (!name) throw new Error('Please enter your name.');
+      if (!option) throw new Error('Please select a preferred option.');
+
+      const payload = {
+        trip_id: TRIP_ID,
+        voter_name: name,
+        preferred_option: option.value,
+        custom_option_description: option.value === 'Other'
+          ? (document.getElementById('custom_option').value.trim() + '\n\n' + document.getElementById('option_notes').value.trim()).trim()
+          : document.getElementById('option_notes').value.trim() || null,
+        budget_per_couple: budget ? budget.value : null,
+        budget_notes: document.getElementById('budget_notes').value.trim() || null,
+        santorini_preference: santorini ? santorini.value : null,
+        santorini_notes: document.getElementById('santorini_notes').value.trim() || null,
+        islands_visited: document.getElementById('islands_visited').value.trim() || null,
+        transport_preference: transport ? transport.value : null,
+        transport_notes: document.getElementById('transport_notes').value.trim() || null,
+        general_comments: document.getElementById('general_comments').value.trim() || null,
+        available_all_dates: document.getElementById('available_all').checked,
+        availability_notes: document.getElementById('availability_notes').value.trim() || null,
+        updated_at: new Date().toISOString()
+      };
+
+      // Check if this voter already submitted (upsert by name)
+      const existing = await supabaseRequest(
+        `trip_votes?voter_name=eq.${encodeURIComponent(name)}&trip_id=eq.${TRIP_ID}&select=id`
+      );
+
+      if (existing && existing.length > 0) {
+        // Update existing vote
+        await supabaseRequest(
+          `trip_votes?id=eq.${existing[0].id}`,
+          { method: 'PATCH', body: payload }
+        );
+        showToast('Vote updated!');
+      } else {
+        // New vote
+        await supabaseRequest('trip_votes', { method: 'POST', body: payload });
+        showToast('Vote submitted!');
+      }
+
+      // Switch to results
+      setTimeout(() => switchTab('results'), 500);
+
+    } catch (err) {
+      showToast(err.message || 'Something went wrong', true);
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Submit My Vote';
+    }
+  }
+
+  // ---- Load Results ----
+  async function loadResults() {
+    try {
+      const votes = await supabaseRequest(
+        `trip_votes?trip_id=eq.${TRIP_ID}&select=*&order=created_at.asc`
+      );
+
+      // Summary counts
+      const counts = { A: 0, B: 0, C: 0, Other: 0 };
+      (votes || []).forEach(v => {
+        if (counts.hasOwnProperty(v.preferred_option)) counts[v.preferred_option]++;
+        else counts.Other++;
+      });
+      document.getElementById('count-a').textContent = counts.A;
+      document.getElementById('count-b').textContent = counts.B;
+      document.getElementById('count-c').textContent = counts.C;
+      document.getElementById('count-other').textContent = counts.Other;
+
+      // Individual cards
+      const list = document.getElementById('results-list');
+      if (!votes || votes.length === 0) {
+        list.innerHTML = '<div class="no-results">No votes yet. Be the first!</div>';
+        return;
+      }
+
+      const optionLabels = {
+        'A': 'Option A: Base Camp Naxos',
+        'B': 'Option B: Paros + Santorini',
+        'C': 'Option C: Naxos + Milos',
+        'Other': 'Custom Idea'
+      };
+      const santoriniLabels = {
+        'must-have': 'Must-have',
+        'nice-to-have': 'Nice to have',
+        'skip': 'Happy to skip',
+        'no-preference': 'No preference'
+      };
+
+      list.innerHTML = votes.map(v => {
+        let html = `<div class="result-card">`;
+        html += `<div class="voter">${escHtml(v.voter_name)}</div>`;
+        html += `<div class="detail"><strong>Preference:</strong> ${optionLabels[v.preferred_option] || escHtml(v.preferred_option)}</div>`;
+
+        if (v.custom_option_description) {
+          html += `<div class="comment">${escHtml(v.custom_option_description)}</div>`;
+        }
+
+        if (v.budget_per_couple) {
+          html += `<div class="detail"><strong>Budget:</strong> ${escHtml(v.budget_per_couple)}</div>`;
+        }
+        if (v.budget_notes) {
+          html += `<div class="detail" style="font-size:0.85em; color:var(--med-gray); margin-left:12px;">${escHtml(v.budget_notes)}</div>`;
+        }
+
+        if (v.santorini_preference) {
+          html += `<div class="detail"><strong>Santorini:</strong> ${santoriniLabels[v.santorini_preference] || escHtml(v.santorini_preference)}</div>`;
+        }
+        if (v.santorini_notes) {
+          html += `<div class="detail" style="font-size:0.85em; color:var(--med-gray); margin-left:12px;">${escHtml(v.santorini_notes)}</div>`;
+        }
+
+        if (v.islands_visited) {
+          html += `<div class="detail"><strong>Been to:</strong> ${escHtml(v.islands_visited)}</div>`;
+        }
+
+        if (v.transport_preference) {
+          const tLabels = { ferry: 'Prefers ferries', flights: 'Prefers flights', 'no-preference': 'No preference' };
+          html += `<div class="detail"><strong>Transport:</strong> ${tLabels[v.transport_preference] || escHtml(v.transport_preference)}</div>`;
+        }
+        if (v.transport_notes) {
+          html += `<div class="detail" style="font-size:0.85em; color:var(--med-gray); margin-left:12px;">${escHtml(v.transport_notes)}</div>`;
+        }
+
+        if (!v.available_all_dates && v.availability_notes) {
+          html += `<div class="detail"><strong>Availability:</strong> ${escHtml(v.availability_notes)}</div>`;
+        }
+
+        if (v.general_comments) {
+          html += `<div class="comment"><strong>Comments:</strong> ${escHtml(v.general_comments)}</div>`;
+        }
+
+        html += `</div>`;
+        return html;
+      }).join('');
+
+    } catch (err) {
+      console.error(err);
+      document.getElementById('results-list').innerHTML =
+        '<div class="no-results" style="color:var(--red);">Error loading results. Try refreshing.</div>';
+    }
+  }
+
+  function escHtml(str) {
+    if (!str) return '';
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/\n/g, '<br>');
+  }
+</script>
+
+</body>
+</html>
