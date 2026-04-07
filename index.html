@@ -616,7 +616,7 @@
     <!-- Option A with photo -->
     <div class="option-card">
       <div class="option-photo-wrapper">
-        <img class="option-photo" src="https://images.unsplash.com/photo-1586861256025-aa0e6e785eb5?w=800&h=300&fit=crop" alt="Naxos beach" loading="lazy">
+        <img class="option-photo" src="https://images.unsplash.com/photo-1504512485720-7d83a16ee930?w=800&h=300&fit=crop" alt="Naxos beach" loading="lazy">
         <div class="option-photo-overlay">Naxos</div>
       </div>
       <div class="option-header green">Option A: "Base Camp Naxos" &mdash; Most Budget-Friendly</div>
@@ -654,7 +654,7 @@
     <!-- Option C with photo -->
     <div class="option-card">
       <div class="option-photo-wrapper">
-        <img class="option-photo" src="https://images.unsplash.com/photo-1586861256025-aa0e6e785eb5?w=800&h=300&fit=crop" alt="Naxos beach" loading="lazy" style="height:120px;">
+        <img class="option-photo" src="https://images.unsplash.com/photo-1504512485720-7d83a16ee930?w=800&h=300&fit=crop" alt="Naxos beach" loading="lazy" style="height:120px;">
         <div class="option-photo-overlay">Naxos</div>
       </div>
       <div class="option-photo-wrapper" style="margin-top:-1px;">
@@ -1024,9 +1024,9 @@ let routeVisible = { a: true, b: true, c: true };
 
 function initMap() {
   map = L.map('map', { scrollWheelZoom: false }).setView([36.95, 25.0], 7);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/voyager/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; OpenStreetMap &copy; CARTO',
-    maxZoom: 12
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    maxZoom: 18
   }).addTo(map);
 
   // Island markers
